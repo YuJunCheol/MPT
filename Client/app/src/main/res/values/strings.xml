@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MobilePT</string>
+    <string name="menu_home">Home</string>
+    <string name="nav_header_title">MobilePT</string>
 </resources>
