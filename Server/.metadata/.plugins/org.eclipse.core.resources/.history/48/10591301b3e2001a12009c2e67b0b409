@@ -1,0 +1,19 @@
+package DB;
+
+public class Insert extends DBConnection{
+	
+	public Insert() {
+		
+	}
+	
+	public void InsertFood() {
+		//System.out.println(user.getUser_id());
+		
+		
+		try {
+			r = st.executeUpdate(sql);
+		}catch(Exception e) {
+			System.out.println("(!)[insert.User]: " + e.getMessage());
+		}
+	}
+}

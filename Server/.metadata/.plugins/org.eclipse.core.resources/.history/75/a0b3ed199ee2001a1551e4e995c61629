@@ -1,0 +1,15 @@
+package XMLConnecter;
+
+public class Connecter extends OpenApi{
+	//1000 °³¾¿ ÃÑ 29922¹ø
+	public Connecter() {
+		
+	}
+	
+	public void setFoodData() {
+		int i=1;
+		Integer i;
+		super("I2790",Integer.toString(i),Integer.toString(i+1000));
+	}
+	
+}

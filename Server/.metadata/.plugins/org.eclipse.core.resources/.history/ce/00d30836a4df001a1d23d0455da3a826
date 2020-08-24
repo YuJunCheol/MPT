@@ -1,0 +1,22 @@
+package Server;
+
+import com.android.mobilepersonaltrainerclient.Model.User;
+
+import DB.Select;
+
+public class Login {
+
+	public Login() {
+		
+	}
+	
+	public boolean Login(User user) {
+		Select select = new Select();
+		if(select.CheckUser(user)) {
+			//System.out.println("계정 있음");
+			return true;
+		}
+		//System.out.println("계정 없음");
+		return false;
+	}
+}

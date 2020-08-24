@@ -1,0 +1,93 @@
+package XMLConnecter;
+
+import java.net.URLEncoder;
+import java.util.ArrayList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+public class Connecter extends OpenApi{
+	
+	String a,b,c,d,e,f,g,h;
+	
+	//1000 °³¾¿ ÃÑ 29922¹ø
+	OpenApi openapi = new OpenApi();
+	public Connecter() {
+		
+	}
+	
+	public void setFoodData() {
+		int i =1;
+		openapi.OpenApi("I2790");
+		for(int r = 0; r< 1; r++) {
+			String url = openapi.geturlBuilder() + Integer.toString(i) + "/" + Integer.toString(i+10);
+			System.out.println(url);
+			try {
+				
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document xml = dBuilder.parse(url);
+				System.out.println(url);
+				
+				Element root = xml.getDocumentElement();
+		        NodeList nNodeList = root.getElementsByTagName("item");
+		        
+		        	
+		        for(int temp = 0; temp < nNodeList.getLength() ;temp++) {
+					Node nNode = nNodeList.item(temp);
+					if(nNode.getNodeType() == Node.ELEMENT_NODE) {
+						Element eElement = (Element)nNode;
+						a = getTagValue("FOOD_CD",eElement);
+						System.out.println(a);
+					}
+		        }
+						
+
+				}catch(Exception e) {
+					
+				}
+			
+			i = i+ 1001;
+		}
+		
+		
+	}
+	
+	
+	
+	private static String getTagValue(String sTag, Element eElement) {
+		 NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
+		 Node nValue = (Node)nlList.item(0);
+		 if(nValue == null) {
+			 return null;
+		 }
+		 return nValue.getNodeValue();
+	}
+	
+	public String Test(String test) {
+		if(test.equalsIgnoreCase("N/A")) {
+			//System.out.println("null");
+			return "0";
+		}
+		return test;
+	}
+	public String FTest(String test) {
+		if(test.equalsIgnoreCase("N/A")) {
+			//System.out.println("null");
+			return "0.0";
+		}
+		return test;
+	}
+	public String STest(String test) {
+		if(test == null) {
+			return "ï¿½ë¾¾ï¿½ì“¬";
+		}
+		return test;
+	}
+	
+}

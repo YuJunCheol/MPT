@@ -1,0 +1,14 @@
+package XMLConnecter;
+
+public class Connecter {
+	//1000 °³¾¿ ÃÑ 29922¹ø
+	
+	private String url = "http://openapi.foodsafetykorea.go.kr/api";
+	private String key = "/6a77c9ae0e0d44388de7";
+	private String servicename = "/I2790";
+	private String requesttype = "/xml";
+	private String rqststart = "/1";
+	private String rqstend = "/100";
+	private String DESC_KOR = "/DESC_KOR";
+	private String desc_kor_data = null;
+}

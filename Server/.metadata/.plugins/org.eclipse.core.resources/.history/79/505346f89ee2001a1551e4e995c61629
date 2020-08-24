@@ -1,0 +1,14 @@
+package XMLConnecter;
+
+public class Connecter extends OpenApi{
+	//1000 °³¾¿ ÃÑ 29922¹ø
+	OpenApi openapi = new OpenApi();
+	public Connecter() {
+		
+	}
+	
+	public void setFoodData() {
+		
+	}
+	
+}

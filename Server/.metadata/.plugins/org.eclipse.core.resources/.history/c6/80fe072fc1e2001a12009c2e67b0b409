@@ -1,0 +1,82 @@
+package XMLConnecter;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import DB.Insert;
+import Data.food;
+
+public class Connecter extends OpenApi{
+	
+	String a,b,c;
+	double d,e,f,g,h,t,j,k;
+	int l,m;
+	
+	//1000 °³¾¿ ÃÑ 29922¹ø
+	OpenApi openapi = new OpenApi();
+	public Connecter() {
+		
+	}
+	
+	public void setFoodData() {
+		int i =1;
+		openapi.OpenApi("I2790");
+		for(int r = 0; r< 1; r++) {
+			String url = openapi.geturlBuilder() + Integer.toString(i) + "/" + Integer.toString(i+10);
+			System.out.println(url);
+			try {
+				DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+				DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+				Document xml = dBuilder.parse(url);
+				
+				Element root = xml.getDocumentElement();
+		        NodeList nNodeList = root.getElementsByTagName("row");
+		        
+		        for(int temp = 0; temp < nNodeList.getLength() ;temp++) {
+					Node nNode = nNodeList.item(temp);
+					if(nNode.getNodeType() == Node.ELEMENT_NODE) {
+						
+						Element eElement = (Element)nNode;
+						a = getTagValue("FOOD_CD",eElement).toString();
+						b = getTagValue("DESC_KOR",eElement).toString();
+						c = getTagValue("GROUP_NAME",eElement).toString();
+						l = Integer.parseInt(getTagValue("SERVING_SIZE",eElement));
+						e = Double.parseDouble(getTagValue("NUTR_CONT1",eElement));
+						f = Double.parseDouble(getTagValue("NUTR_CONT2",eElement));
+						g = Double.parseDouble(getTagValue("NUTR_CONT3",eElement));
+						h = Double.parseDouble(getTagValue("NUTR_CONT4",eElement));
+						t = Double.parseDouble(getTagValue("NUTR_CONT5",eElement));
+						j = Double.parseDouble(getTagValue("NUTR_CONT6",eElement));
+						k = Double.parseDouble(getTagValue("NUTR_CONT7",eElement));
+						l = Integer.parseInt(getTagValue("NUTR_CONT8",eElement));
+						new Insert(new food(a,b,c,d,e,f,g));
+					}
+		        }
+
+			}catch(Exception e) {
+				System.out.println("(ERROR)setFoodData : ");
+				e.printStackTrace();
+			}
+			
+			i = i+ 1001;
+		}
+		
+		
+	}
+	
+	
+	
+	private static String getTagValue(String sTag, Element eElement) {
+		 NodeList nlList = eElement.getElementsByTagName(sTag).item(0).getChildNodes();
+		 Node nValue = (Node)nlList.item(0);
+		 if(nValue == null) {
+			 return null;
+		 }
+		 return nValue.getNodeValue();
+	}
+}
