@@ -10,6 +10,13 @@
 
 
     </group>
+    <item android:title="사용자">
+        <menu >
+            <item
+                android:id="@+id/tv_nav_logtitle"
+                android:title="log_info"/>
+        </menu>
+    </item>
 
 
 </menu>
