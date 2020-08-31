@@ -1,6 +1,10 @@
 package Data;
+
+import java.io.Serializable;
+
 // 사용자의 신장, 체중, 나이, 활동량, 성별,
-public class User_H_info {
+public class User_H_info implements Serializable {
+    private static final long serialVersionUID = 1L;
     private String userActivity;
     private int userAge;
     private double userHeight, userWeight;

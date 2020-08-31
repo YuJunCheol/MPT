@@ -1,9 +1,0 @@
-package XMLConnecter;
-
-public class Main {
-	public static void main(String[] args) {
-		OpenApi openapi = new OpenApi("I2790","100");
-		
-		System.out.println(openapi.geturlBuilder());
-	}
-}
