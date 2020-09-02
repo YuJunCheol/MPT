@@ -1,6 +1,7 @@
 package com.yujuncheol.android.mobilept;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -26,12 +27,13 @@ public class MainActivity extends AppCompatActivity {
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
-
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home).setDrawerLayout(drawer).build();
+                R.id.nav_home,R.id.nav_log).setDrawerLayout(drawer).build();
+
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
+
     }
 
     public boolean onSupportNavigateUp() {

@@ -18,9 +18,18 @@ public class MobilePT implements Runnable {
 	public void run() {
 		// TODO Auto-generated method stub
 		try {
+			Recv recv = new Recv(socket);
+			Send send = new Send(socket);
 			
-		}catch() {
+			switch(recv.getMessage()) {
+			case Login:
+				
+				break;
+			}
 			
+		}catch(Exception e) {
+			System.out.println("(ERROR)[MobilePT]: ");
+			e.printStackTrace();
 		}
 		
 	}
