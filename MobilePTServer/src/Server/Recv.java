@@ -3,7 +3,7 @@ package Server;
 import java.io.ObjectInputStream;
 import java.net.Socket;
 
-import DB.Message;
+import Data.Message;
 
 public class Recv {
 	Socket socket;

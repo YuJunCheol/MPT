@@ -1,4 +1,4 @@
-package DB;
+package Data;
 
 import java.io.Serializable;
 
