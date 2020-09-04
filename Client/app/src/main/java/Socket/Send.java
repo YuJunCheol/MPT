@@ -13,8 +13,7 @@ public class Send {
 
     private ObjectOutputStream outObject,outMessage;
 
-    public
-    Socket socket;
+    public Socket socket;
 
     public Send(){
 
