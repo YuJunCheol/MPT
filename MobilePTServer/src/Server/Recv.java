@@ -4,10 +4,11 @@ import java.io.ObjectInputStream;
 import java.net.Socket;
 
 import Data.Message;
+import Data.User;
 
 public class Recv {
-	Socket socket;
-	ObjectInputStream inObject;
+	private Socket socket;
+	private ObjectInputStream inObject;
 	
 	public Recv(Socket socket) {
 		
@@ -24,6 +25,18 @@ public class Recv {
 			return message;
 		}catch(Exception e) {
 			System.out.println("(ERROR)Recv.getMessage : ");
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public User getUser() {
+		try {
+		inObject = new ObjectInputStream(socket.getInputStream());
+		User user = (User)inObject.readObject();
+		return user;
+		}catch(Exception e) {
+			System.out.println("(ERROR)Recv.getUser: ");
 			e.printStackTrace();
 		}
 		return null;

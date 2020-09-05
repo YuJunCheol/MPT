@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -16,12 +15,13 @@ import androidx.fragment.app.Fragment;
 import com.yujuncheol.android.mobilept.R;
 import com.yujuncheol.android.mobilept.UI.Adduser.AdduserActivity;
 
-import org.w3c.dom.Text;
 
 import Data.Message;
+import Data.Resource;
 import Socket.ConnectSocket;
 
-public class LogFragment extends Fragment implements View.OnClickListener {
+
+public class LogFragment extends Fragment implements View.OnClickListener , Resource {
     private Button btn_login;
     private EditText edt_id, edt_pw;
     private TextView tv_add, tv_find;
@@ -50,6 +50,8 @@ public class LogFragment extends Fragment implements View.OnClickListener {
     public void onClick(View v){
         switch (v.getId()){
             case R.id.login_btn_login:
+                user.setUserid(edt_id.getText().toString());
+                user.setUserpw(edt_pw.getText().toString());
                 new ConnectSocket(Message.Login);
                 return;
             case R.id.login_tv_adduser:

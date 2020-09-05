@@ -6,11 +6,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class MobilePTServer {
+	
 	private ServerSocket serverSocket = null;
 	private Socket clientSocket = null;
 	private Thread thread[] = new Thread[100];
 	String addr;
 	int count = 0;
+	
 	public MobilePTServer() {
 		try {
 			addr = InetAddress.getLocalHost().getHostAddress();

@@ -7,20 +7,21 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import Data.Message;
-import Data.User;
 
 public class Send {
 
     private ObjectOutputStream outObject,outMessage;
+    private Socket socket;
 
-    public Socket socket;
-
-    public Send(){
-
+    public Send(Socket socket){
+        this.socket = socket;
+        if(socket == null) {
+            System.out.println("ERROR : 소켓이 없습니다.");
+        }
     }
 
 
-    public void SendMessage(Socket socket, Message message) {
+    public void SendMessage(Message message) {
         try {
             outMessage = new ObjectOutputStream(socket.getOutputStream());
             outMessage.writeObject(message);
@@ -29,7 +30,7 @@ public class Send {
         }
     }
 
-    public void SendObject(Socket socket, Object object) {
+    public void SendObject(Object object) {
         try {
             outObject = new ObjectOutputStream(socket.getOutputStream());
             outObject.writeObject(object);

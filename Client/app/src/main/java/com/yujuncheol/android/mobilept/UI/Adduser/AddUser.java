@@ -7,10 +7,11 @@ import Data.Resource;
 import Socket.Send;
 
 public class AddUser implements Resource {
-    private Send send = new Send();
 
     public AddUser(Socket socket, Message message) {
-        send.SendMessage(socket,message);
-        //send.SendObject(socket,user);
+        Send send = new Send(socket);
+
+        send.SendMessage(message);
+        send.SendObject(user);
     }
 }

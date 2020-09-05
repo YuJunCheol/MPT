@@ -2,10 +2,16 @@ package Activity;
 
 import java.net.Socket;
 
-public class AddUser {
-	
+import DB.Insert;
+import Data.Resource;
+import Server.Recv;
+
+public class AddUser implements Resource{
+
 	public AddUser(Socket socket) {
-		System.out.println("회원가입");
+		Recv recv = new Recv(socket);
+		user.setUser(recv.getUser());
+		new Insert(user);
 	}
 	
 }
